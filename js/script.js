@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
       setTimeout(function () {
         popup.style.opacity = '0';
         setTimeout(() => popup.remove(), 400);
-      }, 20000);
+      }, 5000);
     });
   }
   
