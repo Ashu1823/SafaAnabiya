@@ -32,11 +32,36 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       if (formStatus) formStatus.textContent = 'Sending...';
       const name = (document.getElementById('name') || {}).value || '';
+
+      // Create popup
+      let popup = document.createElement('div');
+      popup.textContent = 'Message sent. Thank you. For better response, call or WhatsApp us at +971 542147143';
+      popup.style.position = 'fixed';
+      popup.style.top = '30px';
+      popup.style.left = '50%';
+      popup.style.transform = 'translateX(-50%)';
+      popup.style.background = '#28a745';
+      popup.style.color = '#fff';
+      popup.style.padding = '16px 32px';
+      popup.style.borderRadius = '8px';
+      popup.style.boxShadow = '0 2px 12px rgba(0,0,0,0.15)';
+      popup.style.zIndex = '9999';
+      popup.style.fontSize = '1.1rem';
+      popup.style.transition = 'opacity 0.4s';
+      popup.style.opacity = '1';
+      document.body.appendChild(popup);
+
       setTimeout(function () {
-        if (formStatus) formStatus.textContent = 'Message sent (demo only). Thank you' + (name ? ', ' + name : '') + '!';
+        if (formStatus) formStatus.textContent = 'Message sent. Thank you';
         form.reset();
         form.classList.remove('was-validated');
       }, 900);
+
+      // Hide popup after 20 seconds
+      setTimeout(function () {
+        popup.style.opacity = '0';
+        setTimeout(() => popup.remove(), 400);
+      }, 20000);
     });
   }
   
